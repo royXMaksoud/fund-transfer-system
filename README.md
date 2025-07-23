@@ -1,4 +1,6 @@
-# 💸 Fund Transfer Platform – Microservices System  ![Project Structure](screenshot.png)
+# 💸 Fund Transfer Platform – Microservices System  !
+<pre> ``` fund-transfer-service/ ├── application.service/ │ ├── locking/ │ ├── config/ ├── domain/ │ ├── model/ │ ├── ports/ │ ├── in/ │ └── out/ ├── infrastructure/ │ ├── db/ │ ├── persistence.adapters/ │ └── security/ ├── shared/ │ ├── constants/ │ └── exception/ ├── web/ │ ├── controller/ │ ├── dto/ │ └── mappers/ ``` </pre>
+
 
 This project is a secure, scalable, and concurrent microservice-based system for managing user authentication and money transfers between accounts. It follows **Clean Architecture**, **JWT Security**, and **Spring Cloud Gateway** for routing and API composition.
 
