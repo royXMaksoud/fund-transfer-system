@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: fund_transfer_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: P@ssw0rd
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  auth-service:
+    build:
+      context: ./auth-service
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fund_transfer_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: P@ssw0rd
+
+  fund-transfer-service:
+    build:
+      context: ./fund-transfer-service
+    container_name: fund-transfer-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fund_transfer_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: P@ssw0rd
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+    container_name: gateway-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - auth-service
+      - fund-transfer-service
+
+volumes:
+  postgres-data:

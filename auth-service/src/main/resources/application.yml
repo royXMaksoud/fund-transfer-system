@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:fund_transfer_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:P@ssw0rd}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  springdoc:
+    api-docs:
+      path: /v3/api-docs
+    swagger-ui:
+      path: /swagger-ui.html
+      try-it-out-enabled: true
+      operationsSorter: method
+    default-produces-media-type: application/json
+
+jwt:
+  secret: ${JWT_SECRET:SuperSecureKeyThatIsAtLeast64CharactersLongToAvoidWeakKeyException1234567890}
+  expiration: ${JWT_EXPIRATION:86400000}           # 1 day
+  refreshExpiration: ${JWT_REFRESH_EXPIRATION:2592000000}  # 30 days

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+      http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ChangeSet to create accounts table -->
+    <changeSet id="1" author="chatgpt">
+        <createTable tableName="accounts">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="NUMERIC(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet to create transfers table -->
+    <changeSet id="2" author="chatgpt">
+        <createTable tableName="transfers">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="sender_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="receiver_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="NUMERIC(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet to insert initial accounts -->
+    <changeSet id="3" author="chatgpt">
+        <insert tableName="accounts">
+            <column name="id" value="38ff286e-c9d7-4f50-be26-5cbfce2e0e8b"/>
+            <column name="user_id" value="8493d1ee-0dd6-42fa-9063-6b296a2dede9"/>
+            <column name="balance" valueNumeric="1000.00"/>
+        </insert>
+        <insert tableName="accounts">
+            <column name="id" value="38ff286e-c9d7-4f50-be26-5cbfce2e0e27"/>
+            <column name="user_id" value="782482ae-14d2-441d-a075-9a1c18befc22"/>
+            <column name="balance" valueNumeric="500.00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

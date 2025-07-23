@@ -1,0 +1,50 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - PreserveHostHeader
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: http://localhost:8080
+              predicates:
+                - Path=/auth/**
+              filters:
+                - RewritePath=/auth/v3/api-docs(?<segment>/.*), /v3/api-docs${segment}
+                - RewritePath=/auth/v3/api-docs, /v3/api-docs
+                - RewritePath=/auth/swagger-ui(?<segment>/.*), /swagger-ui${segment}
+                - RewritePath=/auth/swagger-ui.html, /swagger-ui.html
+                - name: Logging
+
+            - id: fund-transfer-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/transfers/**, /accounts/**
+              filters:
+                - RewritePath=/transfers/v3/api-docs(?<segment>/.*), /v3/api-docs${segment}
+                - RewritePath=/transfers/v3/api-docs, /v3/api-docs
+                - RewritePath=/transfers/swagger-ui(?<segment>/.*), /swagger-ui${segment}
+                - RewritePath=/transfers/swagger-ui.html, /swagger-ui.html
+                - name: Logging
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: auth-service
+        url: /auth/v3/api-docs
+      - name: fund-transfer-service
+        url: /transfers/v3/api-docs
+
+jwt:
+  secret: SuperSecureKeyThatIsAtLeast64CharactersLongToAvoidWeakKeyException1234567890
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: TRACE

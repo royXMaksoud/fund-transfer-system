@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "ffe3d9c4-dbb1-45b2-a71f-c6676850ecc5",
+		"name": "gateway-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37691193"
+	},
+	"item": [
+		{
+			"name": "authlogin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create New User",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "API-Create transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3kiLCJpYXQiOjE3NTMxODA0NTAsInJvbGUiOiJVU0VSIiwiZXhwIjoxNzUzMjY2ODUwfQ.SVAVi3GCejjS0DxBzBMSYFO2FjRVLj4181wd_Al8ZDF2smmmWrC6Njl5Pghm0u63WP2s3S3LVEugpZPpcr4-ZA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"senderId\": \"a07c5de6-5542-476a-9265-16007440a09a\",\r\n  \"receiverId\":  \"0b3b9c60-0fa8-490a-9746-acffa946faa9\",\r\n \r\n  \"amount\": 1.00,\r\n  \"currency\": \"USD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

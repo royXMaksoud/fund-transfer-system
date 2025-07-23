@@ -1,0 +1,17 @@
+2025-07-24T00:11:46.013+02:00  WARN 4612 --- [fund-transfer-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h48m18s327ms50µs800ns).
+2025-07-24T00:21:20.178+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2025-07-24T00:21:20.211+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1fa754f7, started on Wed Jul 23 21:42:54 CEST 2025
+2025-07-24T00:21:20.373+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2025-07-24T00:21:20.392+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'applicationTaskExecutor' completed its stop procedure
+2025-07-24T00:21:20.393+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147482623
+2025-07-24T00:21:20.455+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerGracefulShutdown' completed its stop procedure
+2025-07-24T00:21:20.456+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147481599
+2025-07-24T00:21:20.563+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerStartStop' completed its stop procedure
+2025-07-24T00:21:20.563+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase -2147483647
+2025-07-24T00:21:20.567+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'springBootLoggingLifecycle' completed its stop procedure
+2025-07-24T00:21:20.581+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2025-07-24T00:21:20.593+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2025-07-24T00:21:20.594+02:00 DEBUG 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-07-24T00:21:20.611+02:00  INFO 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-24T00:21:20.731+02:00  INFO 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-24T00:21:20.753+02:00  INFO 4612 --- [fund-transfer-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
