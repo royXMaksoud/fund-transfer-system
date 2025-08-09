@@ -6,6 +6,7 @@ spring:
     gateway:
       default-filters:
         - PreserveHostHeader
+
       server:
         webflux:
           routes:
@@ -14,22 +15,30 @@ spring:
               predicates:
                 - Path=/auth/**
               filters:
+                - name: Logging
                 - RewritePath=/auth/v3/api-docs(?<segment>/.*), /v3/api-docs${segment}
                 - RewritePath=/auth/v3/api-docs, /v3/api-docs
                 - RewritePath=/auth/swagger-ui(?<segment>/.*), /swagger-ui${segment}
                 - RewritePath=/auth/swagger-ui.html, /swagger-ui.html
-                - name: Logging
 
             - id: fund-transfer-service
               uri: http://localhost:8081
               predicates:
-                - Path=/transfers/**, /accounts/**
+                - Path=/transfers/**,/accounts/**
               filters:
+                - name: Logging
                 - RewritePath=/transfers/v3/api-docs(?<segment>/.*), /v3/api-docs${segment}
                 - RewritePath=/transfers/v3/api-docs, /v3/api-docs
                 - RewritePath=/transfers/swagger-ui(?<segment>/.*), /swagger-ui${segment}
                 - RewritePath=/transfers/swagger-ui.html, /swagger-ui.html
-                - name: Logging
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowed-origins: "*"
+                allowed-methods: "*"
+                allowed-headers: "*"
+                allow-credentials: false
 
 springdoc:
   swagger-ui:
@@ -48,3 +57,10 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web: TRACE
+
+gateway:
+  whitelist: >
+    /auth/**,/swagger-ui/**,/swagger-ui.html,/webjars/**,
+    /v3/api-docs,/v3/api-docs/**,
+    /**/v3/api-docs,/**/v3/api-docs/**,
+    /actuator/health
